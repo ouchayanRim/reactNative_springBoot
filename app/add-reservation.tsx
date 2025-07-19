@@ -35,18 +35,19 @@ export default function AddReservationScreen() {
     }
 
     setLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    addReservation({
+    const result = await addReservation({
       date,
       time,
       duration: durationNum,
       guestCount: guestCountNum,
     });
-
     setLoading(false);
-    router.back();
+
+    if (result.success) {
+      router.back();
+    } else {
+      Alert.alert('Error', result.error || 'Failed to create reservation');
+    }
   };
 
   return (

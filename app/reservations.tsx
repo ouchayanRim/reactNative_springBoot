@@ -7,20 +7,23 @@ import { Reservation, useReservations } from '@/contexts/ReservationContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
 import React from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Alert, FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export default function ReservationsScreen() {
   const colorScheme = useColorScheme();
   const { logout } = useAuth();
-  const { reservations, deleteReservation } = useReservations();
+  const { reservations, deleteReservation, loading } = useReservations();
 
-  const handleLogout = () => {
-    logout();
-    router.replace('/');
+  const handleLogout = async () => {
+    await logout();
+    router.replace('/login');
   };
 
-  const handleDelete = (id: string) => {
-    deleteReservation(id);
+  const handleDelete = async (id: number) => {
+    const result = await deleteReservation(id);
+    if (!result.success && result.error) {
+      Alert.alert('Error', result.error);
+    }
   };
 
   const renderReservation = ({ item }: { item: Reservation }) => (
@@ -68,7 +71,7 @@ export default function ReservationsScreen() {
         <FlatList
           data={[...reservations]}
           renderItem={renderReservation}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.list}
           extraData={reservations.length}
         />

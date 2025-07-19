@@ -3,10 +3,11 @@ import { ThemedView } from '@/components/ThemedView';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Colors } from '@/constants/Colors';
+import { useAuth } from '@/contexts/AuthContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function SignupScreen() {
   const [username, setUsername] = useState('');
@@ -14,20 +15,23 @@ export default function SignupScreen() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const colorScheme = useColorScheme();
+  const { register } = useAuth();
 
   const handleSignup = async () => {
     if (!username.trim() || !email.trim() || !password.trim()) {
-      // In a real app, you'd show an error message
+      Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
     setLoading(true);
-    // Simulate signup API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const result = await register(username, email, password);
     setLoading(false);
     
-    // Navigate or handle success - for now just log
-    console.log('Signup attempted with:', { username, email, password });
+    if (result.success) {
+      router.replace('/login');
+    } else {
+      Alert.alert('Error', result.error || 'Registration failed');
+    }
   };
 
   return (

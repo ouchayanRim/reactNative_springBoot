@@ -18,7 +18,7 @@ export default function EditReservationScreen() {
 
   useEffect(() => {
     if (id) {
-      const reservation = getReservation(id);
+      const reservation = getReservation(parseInt(id));
       if (reservation) {
         setDate(reservation.date);
         setTime(reservation.time);
@@ -57,18 +57,19 @@ export default function EditReservationScreen() {
     }
 
     setLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    updateReservation(id, {
+    const result = await updateReservation(parseInt(id), {
       date,
       time,
       duration: durationNum,
       guestCount: guestCountNum,
     });
-
     setLoading(false);
-    router.back();
+
+    if (result.success) {
+      router.back();
+    } else {
+      Alert.alert('Error', result.error || 'Failed to update reservation');
+    }
   };
 
   return (

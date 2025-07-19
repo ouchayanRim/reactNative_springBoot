@@ -23,16 +23,13 @@ export default function LoginScreen() {
     }
 
     setLoading(true);
-    // Simulate login API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    const success = login(emailOrUsername, password);
+    const result = await login(emailOrUsername, password);
     setLoading(false);
     
-    if (success) {
+    if (result.success) {
       router.replace('/reservations');
     } else {
-      Alert.alert('Error', 'Invalid credentials');
+      Alert.alert('Login Failed', result.error || 'Invalid credentials. Please try again.');
     }
   };
 
