@@ -1,13 +1,21 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
+import { useAuth } from '@/contexts/AuthContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Link } from 'expo-router';
-import React from 'react';
+import { Link, router } from 'expo-router';
+import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
+  const { isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace('/reservations');
+    }
+  }, [isAuthenticated]);
 
   return (
     <ThemedView style={styles.container}>

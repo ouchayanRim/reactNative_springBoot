@@ -3,30 +3,37 @@ import { ThemedView } from '@/components/ThemedView';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Colors } from '@/constants/Colors';
+import { useAuth } from '@/contexts/AuthContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function LoginScreen() {
   const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const colorScheme = useColorScheme();
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     if (!emailOrUsername.trim() || !password.trim()) {
-      // In a real app, you'd show an error message
+      Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
     setLoading(true);
-    // Simulate login API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Simulate login API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const success = login(emailOrUsername, password);
     setLoading(false);
     
-    // Navigate or handle success - for now just log
-    console.log('Login attempted with:', { emailOrUsername, password });
+    if (success) {
+      router.replace('/reservations');
+    } else {
+      Alert.alert('Error', 'Invalid credentials');
+    }
   };
 
   return (
