@@ -1,0 +1,45 @@
+appId: com.rim.reservation
+name: Login Tests
+---
+# 1. Lancer l'application
+- launchApp
+
+# 2. Vérifier que l'on est sur l'écran de login
+- assertVisible: "Welcome Back"
+
+# 3. Test de login avec champs vides
+- tapOn:
+    testId: button-login
+- assertVisible: "Please fill in all fields"
+
+# 4. Test de login avec identifiants incorrects
+- tapOn:
+    testId: input-email
+- inputText: "wrong@example.com"
+
+- tapOn:
+    testId: input-password
+- inputText: "wrongpassword"
+
+- tapOn:
+    testId: button-login
+- waitForTimeout: 1000
+- assertVisible: "Login Failed"
+
+# 5. Test de login avec identifiants corrects
+- tapOn:
+    testId: input-email
+- eraseText
+- inputText: "testuser@example.com"
+
+- tapOn:
+    testId: input-password
+- eraseText
+- inputText: "password123"
+
+- tapOn:
+    testId: button-login
+
+# 6. Attendre la redirection et vérifier qu'on est sur la page réservations
+- waitForTimeout: 2000
+- assertVisible: "Réservations"
