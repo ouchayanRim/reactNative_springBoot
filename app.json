@@ -13,7 +13,7 @@
       "bundleIdentifier": "com.rim.reservation"
     },
     "android": {
-      "package": "com.rim.cinemaapp",
+      "package": "com.rim.reservation",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
