@@ -9,25 +9,25 @@ import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function LoginScreen() {
-  const [emailOrUsername, setEmailOrUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
 
   const handleLogin = async () => {
-    if (!emailOrUsername.trim() || !password.trim()) {
+    if (!email.trim() || !password.trim()) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
     setLoading(true);
-    const result = await login(emailOrUsername, password);
+    const result = await login(email, password);
     setLoading(false);
-    
+
     if (result.success) {
-      router.replace('/reservations');
+      router.replace('/reservation'); // redirection vers page réservations
     } else {
-      Alert.alert('Login Failed', result.error || 'Invalid credentials. Please try again.');
+      Alert.alert('Error', result.error || 'Login failed');
     }
   };
 
@@ -36,25 +36,23 @@ export default function LoginScreen() {
       style={styles.container} 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView 
-        contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled"
-      >
+      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
         <ThemedView style={styles.container}>
           <View style={styles.content}>
             <View style={styles.header}>
-              <ThemedText style={styles.title}>Welcome Back</ThemedText>
+              <ThemedText style={styles.title} testID="login-title">Welcome Back</ThemedText>
               <ThemedText style={styles.subtitle}>Sign in to your account</ThemedText>
             </View>
 
             <View style={styles.form}>
               <Input
-                label="Email or Username"
-                value={emailOrUsername}
-                onChangeText={setEmailOrUsername}
-                placeholder="Enter your email or username"
+                label="Email"
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Enter your email"
                 keyboardType="email-address"
                 autoCapitalize="none"
+                testID="input-email"
               />
 
               <Input
@@ -63,32 +61,24 @@ export default function LoginScreen() {
                 onChangeText={setPassword}
                 placeholder="Enter your password"
                 secureTextEntry
+                testID="input-password"
               />
 
               <Button
-                title="Sign In"
+                title="Login"
                 onPress={handleLogin}
                 loading={loading}
+                testID="button-login"
               />
             </View>
 
             <View style={styles.footer}>
               <ThemedText style={styles.footerText}>
-                Don&apos;t have an account?{' '}
-                <Link href="/signup" style={{ color: Colors.tint }}>
-                  <ThemedText style={[styles.link, { color: Colors.tint }]}>
-                    Sign Up
-                  </ThemedText>
+                Don’t have an account?{' '}
+                <Link href="/signup" testID="link-signup" style={{ color: Colors.tint }}>
+                  <ThemedText style={[styles.link, { color: Colors.tint }]}>Sign Up</ThemedText>
                 </Link>
               </ThemedText>
-
-              <View style={styles.backContainer}>
-                <Link href="/" style={{ color: Colors.icon }}>
-                  <ThemedText style={[styles.backText, { color: Colors.icon }]}>
-                    ← Back to Home
-                  </ThemedText>
-                </Link>
-              </View>
             </View>
           </View>
         </ThemedView>
@@ -98,9 +88,7 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1 },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
@@ -139,11 +127,4 @@ const styles = StyleSheet.create({
   link: {
     fontWeight: '600',
   },
-  backContainer: {
-    alignItems: 'center',
-    marginTop: 30,
-  },
-  backText: {
-    fontSize: 14,
-  },
-}); 
+});

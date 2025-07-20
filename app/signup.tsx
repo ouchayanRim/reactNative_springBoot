@@ -24,7 +24,7 @@ export default function SignupScreen() {
     setLoading(true);
     const result = await register(username, email, password);
     setLoading(false);
-    
+
     if (result.success) {
       router.replace('/login');
     } else {
@@ -44,7 +44,7 @@ export default function SignupScreen() {
         <ThemedView style={styles.container}>
           <View style={styles.content}>
             <View style={styles.header}>
-              <ThemedText style={styles.title}>Create Account</ThemedText>
+              <ThemedText style={styles.title} testID="signup-title">Create Account</ThemedText>
               <ThemedText style={styles.subtitle}>Sign up to get started</ThemedText>
             </View>
 
@@ -55,6 +55,7 @@ export default function SignupScreen() {
                 onChangeText={setUsername}
                 placeholder="Choose a username"
                 autoCapitalize="none"
+                testID="input-username"
               />
 
               <Input
@@ -64,6 +65,7 @@ export default function SignupScreen() {
                 placeholder="Enter your email"
                 keyboardType="email-address"
                 autoCapitalize="none"
+                testID="input-email"
               />
 
               <Input
@@ -72,19 +74,21 @@ export default function SignupScreen() {
                 onChangeText={setPassword}
                 placeholder="Choose a password"
                 secureTextEntry
+                testID="input-password"
               />
 
               <Button
                 title="Create Account"
                 onPress={handleSignup}
                 loading={loading}
+                testID="button-signup"
               />
             </View>
 
             <View style={styles.footer}>
               <ThemedText style={styles.footerText}>
                 Already have an account?{' '}
-                <Link href="/login" style={{ color: Colors.tint }}>
+                <Link href="/login" style={{ color: Colors.tint }} testID="link-signin">
                   <ThemedText style={[styles.link, { color: Colors.tint }]}>
                     Sign In
                   </ThemedText>
@@ -92,7 +96,7 @@ export default function SignupScreen() {
               </ThemedText>
 
               <View style={styles.backContainer}>
-                <Link href="/" style={{ color: Colors.icon }}>
+                <Link href="/" style={{ color: Colors.icon }} testID="link-back-home">
                   <ThemedText style={[styles.backText, { color: Colors.icon }]}>
                     ← Back to Home
                   </ThemedText>
@@ -107,9 +111,7 @@ export default function SignupScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1 },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
@@ -155,4 +157,4 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 14,
   },
-}); 
+});

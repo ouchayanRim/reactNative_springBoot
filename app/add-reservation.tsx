@@ -5,7 +5,14 @@ import { Input } from '@/components/ui/Input';
 import { useReservations } from '@/contexts/ReservationContext';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 
 export default function AddReservationScreen() {
   const [date, setDate] = useState('');
@@ -64,6 +71,7 @@ export default function AddReservationScreen() {
 
           <View style={styles.form}>
             <Input
+              testID="reservation-date-input"
               label="Date"
               value={date}
               onChangeText={setDate}
@@ -71,6 +79,7 @@ export default function AddReservationScreen() {
             />
 
             <Input
+              testID="reservation-time-input"
               label="Time"
               value={time}
               onChangeText={setTime}
@@ -78,6 +87,7 @@ export default function AddReservationScreen() {
             />
 
             <Input
+              testID="reservation-duration-input"
               label="Duration (hours)"
               value={duration}
               onChangeText={setDuration}
@@ -86,6 +96,7 @@ export default function AddReservationScreen() {
             />
 
             <Input
+              testID="reservation-guest-count-input"
               label="Guest Count"
               value={guestCount}
               onChangeText={setGuestCount}
@@ -94,12 +105,14 @@ export default function AddReservationScreen() {
             />
 
             <Button
+              testID="reservation-submit-button"
               title="Create Reservation"
               onPress={handleSubmit}
               loading={loading}
             />
 
             <Button
+              testID="reservation-cancel-button"
               title="Cancel"
               onPress={() => router.back()}
               variant="secondary"
@@ -142,4 +155,4 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     alignSelf: 'center',
   },
-}); 
+});

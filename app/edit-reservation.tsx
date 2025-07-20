@@ -5,7 +5,14 @@ import { Input } from '@/components/ui/Input';
 import { useReservations } from '@/contexts/ReservationContext';
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 
 export default function EditReservationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -86,6 +93,7 @@ export default function EditReservationScreen() {
 
           <View style={styles.form}>
             <Input
+              testID="edit-reservation-date-input"
               label="Date"
               value={date}
               onChangeText={setDate}
@@ -93,6 +101,7 @@ export default function EditReservationScreen() {
             />
 
             <Input
+              testID="edit-reservation-time-input"
               label="Time"
               value={time}
               onChangeText={setTime}
@@ -100,6 +109,7 @@ export default function EditReservationScreen() {
             />
 
             <Input
+              testID="edit-reservation-duration-input"
               label="Duration (hours)"
               value={duration}
               onChangeText={setDuration}
@@ -108,6 +118,7 @@ export default function EditReservationScreen() {
             />
 
             <Input
+              testID="edit-reservation-guest-count-input"
               label="Guest Count"
               value={guestCount}
               onChangeText={setGuestCount}
@@ -116,12 +127,14 @@ export default function EditReservationScreen() {
             />
 
             <Button
+              testID="edit-reservation-submit-button"
               title="Update Reservation"
               onPress={handleSubmit}
               loading={loading}
             />
 
             <Button
+              testID="edit-reservation-cancel-button"
               title="Cancel"
               onPress={() => router.back()}
               variant="secondary"
@@ -164,4 +177,4 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     alignSelf: 'center',
   },
-}); 
+});
