@@ -4,29 +4,28 @@ appId: com.rim.reservation
 
 - tapOn:
     id: input-username
-- fill:
-    text: testuser
+- inputText: testuser
 
 - tapOn:
     id: input-email
-- fill:
-    text: test@example.com
+- inputText: test@example.com
 
 - tapOn:
     id: input-password
-- fill:
-    text: testpassword
+- inputText: testpassword
 
 - tapOn:
     id: button-signup
 
-- waitForElement:
-    id: link-signin
+- extendedWaitUntil:
+    visible:
+      id: link-signin
     timeout: 5000
 
 - tapOn:
     id: link-signin
 
-- waitForElement:
-    id: login-title
+- extendedWaitUntil:
+    visible:
+      id: login-title
     timeout: 5000

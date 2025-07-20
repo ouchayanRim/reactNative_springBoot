@@ -9,37 +9,41 @@ name: Login Tests
 
 # 3. Test de login avec champs vides
 - tapOn:
-    testId: button-login
+    id: button-login
 - assertVisible: "Please fill in all fields"
 
 # 4. Test de login avec identifiants incorrects
 - tapOn:
-    testId: input-email
+    id: input-email
 - inputText: "wrong@example.com"
 
 - tapOn:
-    testId: input-password
+    id: input-password
 - inputText: "wrongpassword"
 
 - tapOn:
-    testId: button-login
-- waitForTimeout: 1000
+    id: button-login
+- extendedWaitUntil:
+    visible: "Login Failed"
+    timeout: 1000
 - assertVisible: "Login Failed"
 
 # 5. Test de login avec identifiants corrects
 - tapOn:
-    testId: input-email
+    id: input-email
 - eraseText
 - inputText: "testuser@example.com"
 
 - tapOn:
-    testId: input-password
+    id: input-password
 - eraseText
 - inputText: "password123"
 
 - tapOn:
-    testId: button-login
+    id: button-login
 
 # 6. Attendre la redirection et vérifier qu'on est sur la page réservations
-- waitForTimeout: 2000
-- assertVisible: "Réservations"
+- extendedWaitUntil:
+    visible: "My Reservations"
+    timeout: 2000
+- assertVisible: "My Reservations"
