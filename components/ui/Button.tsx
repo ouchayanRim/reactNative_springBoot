@@ -1,6 +1,5 @@
 import { ThemedText } from '@/components/ThemedText';
 import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import React from 'react';
 import { ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
 
@@ -19,9 +18,6 @@ export function Button({
   loading = false,
   disabled = false,
 }: ButtonProps) {
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
-
   const isPrimary = variant === 'primary';
   const isDisabled = disabled || loading;
 
@@ -30,8 +26,8 @@ export function Button({
       style={[
         styles.button,
         {
-          backgroundColor: isPrimary ? colors.tint : 'transparent',
-          borderColor: colors.tint,
+          backgroundColor: isPrimary ? Colors.tint : 'transparent',
+          borderColor: Colors.tint,
           borderWidth: isPrimary ? 0 : 2,
           opacity: isDisabled ? 0.6 : 1,
         },
@@ -40,13 +36,13 @@ export function Button({
       disabled={isDisabled}
     >
       {loading ? (
-        <ActivityIndicator color={isPrimary ? 'white' : colors.tint} />
+        <ActivityIndicator color={isPrimary ? 'white' : Colors.tint} />
       ) : (
         <ThemedText
           style={[
             styles.buttonText,
             {
-              color: isPrimary ? 'white' : colors.tint,
+              color: isPrimary ? 'white' : Colors.tint,
             },
           ]}
         >

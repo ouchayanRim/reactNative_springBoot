@@ -1,6 +1,5 @@
 import { ThemedText } from '@/components/ThemedText';
 import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
@@ -23,9 +22,6 @@ export function Input({
   keyboardType = 'default',
   autoCapitalize = 'sentences',
 }: InputProps) {
-  const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
-
   return (
     <View style={styles.container}>
       <ThemedText style={styles.label}>{label}</ThemedText>
@@ -33,15 +29,15 @@ export function Input({
         style={[
           styles.input,
           {
-            borderColor: colors.icon,
-            backgroundColor: colorScheme === 'dark' ? '#2A2A2A' : '#F5F5F5',
-            color: colors.text,
+            borderColor: Colors.icon,
+            backgroundColor: '#F5F5F5',
+            color: Colors.text,
           },
         ]}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        placeholderTextColor={colors.icon}
+        placeholderTextColor={Colors.icon}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}

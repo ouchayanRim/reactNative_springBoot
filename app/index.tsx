@@ -2,13 +2,11 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Colors } from '@/constants/Colors';
 import { useAuth } from '@/contexts/AuthContext';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { Link, router } from 'expo-router';
 import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
-  const colorScheme = useColorScheme();
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -24,12 +22,12 @@ export default function HomeScreen() {
         <ThemedText style={styles.subtitle}>Please choose an option to continue</ThemedText>
         
         <View style={styles.buttonContainer}>
-          <Link href="/login" style={[styles.button, { backgroundColor: Colors[colorScheme ?? 'light'].tint }]}>
+          <Link href="/login" style={[styles.button, { backgroundColor: Colors.tint }]}>
             <ThemedText style={styles.buttonText}>Login</ThemedText>
           </Link>
           
-          <Link href="/signup" style={[styles.button, styles.secondaryButton, { borderColor: Colors[colorScheme ?? 'light'].tint }]}>
-            <ThemedText style={[styles.buttonText, { color: Colors[colorScheme ?? 'light'].tint }]}>Sign Up</ThemedText>
+          <Link href="/signup" style={[styles.button, styles.secondaryButton, { borderColor: Colors.tint }]}>
+            <ThemedText style={[styles.buttonText, { color: Colors.tint }]}>Sign Up</ThemedText>
           </Link>
         </View>
       </View>

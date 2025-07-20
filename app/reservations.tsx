@@ -4,13 +4,11 @@ import { Button } from '@/components/ui/Button';
 import { Colors } from '@/constants/Colors';
 import { useAuth } from '@/contexts/AuthContext';
 import { Reservation, useReservations } from '@/contexts/ReservationContext';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { router } from 'expo-router';
 import React from 'react';
 import { Alert, FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export default function ReservationsScreen() {
-  const colorScheme = useColorScheme();
   const { logout } = useAuth();
   const { reservations, deleteReservation, loading } = useReservations();
 
@@ -27,7 +25,7 @@ export default function ReservationsScreen() {
   };
 
   const renderReservation = ({ item }: { item: Reservation }) => (
-    <View style={[styles.reservationCard, { backgroundColor: colorScheme === 'dark' ? '#2A2A2A' : '#F5F5F5' }]}>
+    <View style={[styles.reservationCard, { backgroundColor: '#F5F5F5' }]}>
       <View style={styles.reservationHeader}>
         <ThemedText style={styles.date}>{item.date}</ThemedText>
         <ThemedText style={styles.time}>{item.time}</ThemedText>
@@ -37,13 +35,13 @@ export default function ReservationsScreen() {
         <ThemedText style={styles.detail}>Guests: {item.guestCount}</ThemedText>
       </View>
       <View style={styles.reservationActions}>
-        <TouchableOpacity
-          style={[styles.actionButton, styles.editButton, { borderColor: Colors[colorScheme ?? 'light'].tint }]}
+        <TouchableOpacity 
+          style={[styles.actionButton, styles.editButton, { borderColor: Colors.tint }]}
           onPress={() => router.push(`/edit-reservation?id=${item.id}`)}
         >
-          <ThemedText style={[styles.actionText, { color: Colors[colorScheme ?? 'light'].tint }]}>Edit</ThemedText>
+          <ThemedText style={[styles.actionText, { color: Colors.tint }]}>Edit</ThemedText>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity 
           style={[styles.actionButton, styles.deleteButton]}
           onPress={() => handleDelete(item.id)}
         >
@@ -57,8 +55,8 @@ export default function ReservationsScreen() {
     <ThemedView style={styles.container}>
       <View style={styles.header}>
         <ThemedText style={styles.title}>My Reservations</ThemedText>
-        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
-          <ThemedText style={[styles.logoutText, { color: Colors[colorScheme ?? 'light'].icon }]}>Logout</ThemedText>
+        <TouchableOpacity onPress={handleLogout}>
+          <ThemedText style={[styles.logoutText, { color: Colors.icon }]}>Logout</ThemedText>
         </TouchableOpacity>
       </View>
 
@@ -69,11 +67,11 @@ export default function ReservationsScreen() {
         </View>
       ) : (
         <FlatList
-          data={[...reservations]}
+          data={reservations}
           renderItem={renderReservation}
           keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={styles.list}
-          extraData={reservations.length}
+          style={styles.list}
+          showsVerticalScrollIndicator={false}
         />
       )}
 
@@ -81,6 +79,7 @@ export default function ReservationsScreen() {
         <Button
           title="Add New Reservation"
           onPress={() => router.push('/add-reservation')}
+          loading={loading}
         />
       </View>
     </ThemedView>
