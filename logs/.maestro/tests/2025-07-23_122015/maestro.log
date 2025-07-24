@@ -1,0 +1,110 @@
+12:20:15.496 [ INFO] MAESTRO.logSystemInfo: ---- System Info ----
+12:20:15.502 [ INFO] MAESTRO.logSystemInfo: Maestro Version: 1.41.0
+12:20:15.505 [ INFO] MAESTRO.logSystemInfo: CI: Undefined
+12:20:15.506 [ INFO] MAESTRO.logSystemInfo: OS Name: Windows 11
+12:20:15.506 [ INFO] MAESTRO.logSystemInfo: OS Version: 10.0
+12:20:15.507 [ INFO] MAESTRO.logSystemInfo: Architecture: amd64
+12:20:15.507 [ INFO] MAESTRO.logSystemInfo: Java Version: 17
+12:20:15.513 [ INFO] MAESTRO.logSystemInfo: Xcode Version: null
+12:20:15.515 [ INFO] MAESTRO.logSystemInfo: Flutter Version: Undefined
+12:20:15.518 [ INFO] MAESTRO.logSystemInfo: Flutter Channel: Undefined
+12:20:15.518 [ INFO] MAESTRO.logSystemInfo: ---------------------
+12:20:15.726 [DEBUG] io.micrometer.common.util.internal.logging.InternalLoggerFactory.newDefaultFactory: Using SLF4J as the default logging framework
+12:20:15.917 [ INFO] maestro.cli.command.TestCommand.runShardSuite: [shard 1] Selected device emulator-5554 using port 7001 with execution plan ExecutionPlan(flowsToRun=[C:\Users\mouch\Desktop\mini-rn_spring\mini-project-rn\maestro\maestro_test.yaml], sequence=FlowSequence(flows=[], continueOnFailure=true), workspaceConfig=WorkspaceConfig(flows=null, includeTags=null, excludeTags=null, local=null, executionOrder=null, baselineBranch=null, notifications=null, disableRetries=false, platform=PlatformConfiguration(android=AndroidConfiguration(disableAnimations=false), ios=IOSConfiguration(disableAnimations=false, snapshotKeyHonorModalViews=null))))
+12:20:19.790 [ INFO] maestro.Maestro.invoke: Getting device info
+12:20:20.605 [ INFO] maestro.Maestro.invoke: Got device info: DeviceInfo(platform=ANDROID, widthPixels=1080, heightPixels=1920, widthGrid=1080, heightGrid=1920)
+12:20:20.983 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Define variables RUNNING
+12:20:20.998 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Define variables COMPLETED
+12:20:20.998 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Apply configuration RUNNING
+12:20:20.998 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Apply configuration COMPLETED
+12:20:20.999 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Launch app "com.rim.reservation" RUNNING
+12:20:23.499 [ INFO] maestro.Maestro.launchApp: Launching app com.rim.reservation
+12:20:23.838 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Launch app "com.rim.reservation" COMPLETED
+12:20:23.839 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Welcome" is visible RUNNING
+12:20:30.805 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Welcome" is visible COMPLETED
+12:20:30.805 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Please choose an option to continue" is visible RUNNING
+12:20:31.338 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Please choose an option to continue" is visible COMPLETED
+12:20:31.338 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Login" is visible RUNNING
+12:20:31.400 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Login" is visible COMPLETED
+12:20:31.400 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Sign Up" is visible RUNNING
+12:20:31.483 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Sign Up" is visible COMPLETED
+12:20:31.484 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Sign Up" RUNNING
+12:20:31.516 [ INFO] maestro.Maestro.tap-BUbHBYE: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Sign Up, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[467,1147][610,1210], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=467, y=1147, width=143, height=63))
+12:20:32.635 [ INFO] maestro.Maestro.tap-BUbHBYE: Refreshed element
+12:20:32.637 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Tapping at (538, 1178) using hierarchy based logic for wait
+12:20:32.637 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:32.638 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:33.640 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:33.640 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:34.162 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Screenshots are not different enough (d=0.0)
+12:20:34.162 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Nothing changed in the UI.
+12:20:34.162 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Sign Up" COMPLETED
+12:20:34.162 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Create Account" is visible RUNNING
+12:20:34.371 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Create Account" is visible COMPLETED
+12:20:34.371 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Sign up to get started" is visible RUNNING
+12:20:34.420 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Sign up to get started" is visible COMPLETED
+12:20:34.420 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Choose a username" RUNNING
+12:20:34.566 [ INFO] maestro.Maestro.tap-BUbHBYE: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=Choose a username, accessibilityText=, hintText=Choose a username, ignoreBoundsFiltering=false, resource-id=, clickable=true, bounds=[53,389][1028,521], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=53, y=389, width=975, height=132))
+12:20:35.672 [ INFO] maestro.Maestro.tap-BUbHBYE: Refreshed element
+12:20:35.672 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Tapping at (540, 455) using hierarchy based logic for wait
+12:20:35.672 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:35.672 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:37.652 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Something have changed in the UI judging by view hierarchy. Proceed.
+12:20:37.653 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Choose a username" COMPLETED
+12:20:37.653 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123 RUNNING
+12:20:37.657 [ INFO] maestro.Maestro.inputText: Inputting text: aim123
+12:20:39.459 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123 COMPLETED
+12:20:39.459 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Enter your email" RUNNING
+12:20:39.628 [ INFO] maestro.Maestro.tap-BUbHBYE: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=Enter your email, accessibilityText=, hintText=Enter your email, ignoreBoundsFiltering=false, resource-id=, clickable=true, bounds=[53,699][1028,831], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=53, y=699, width=975, height=132))
+12:20:40.782 [ INFO] maestro.Maestro.tap-BUbHBYE: Refreshed element
+12:20:40.783 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Tapping at (540, 765) using hierarchy based logic for wait
+12:20:40.783 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:40.784 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:42.512 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Something have changed in the UI judging by view hierarchy. Proceed.
+12:20:42.512 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Enter your email" COMPLETED
+12:20:42.513 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123@example.com RUNNING
+12:20:42.513 [ INFO] maestro.Maestro.inputText: Inputting text: aim123@example.com
+12:20:45.324 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123@example.com COMPLETED
+12:20:45.324 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Choose a password" RUNNING
+12:20:45.435 [ INFO] maestro.Maestro.tap-BUbHBYE: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=Choose a password, accessibilityText=, hintText=Choose a password, ignoreBoundsFiltering=false, resource-id=, clickable=true, bounds=[53,1009][1028,1048], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=53, y=1009, width=975, height=39))
+12:20:47.191 [ INFO] maestro.Maestro.tap-BUbHBYE: Refreshed element
+12:20:47.192 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Tapping at (540, 1028) using hierarchy based logic for wait
+12:20:47.192 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:47.192 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:49.082 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Something have changed in the UI judging by view hierarchy. Proceed.
+12:20:49.083 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Choose a password" COMPLETED
+12:20:49.083 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123@- RUNNING
+12:20:49.083 [ INFO] maestro.Maestro.inputText: Inputting text: aim123@-
+12:20:50.787 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Input text aim123@- COMPLETED
+12:20:50.787 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Hide Keyboard RUNNING
+12:20:50.788 [ INFO] maestro.Maestro.hideKeyboard: Hiding Keyboard
+12:20:51.847 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Hide Keyboard COMPLETED
+12:20:51.847 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Create Account" is visible RUNNING
+12:20:51.974 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Assert that "Create Account" is visible COMPLETED
+12:20:51.974 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Create Account" RUNNING
+12:20:52.055 [ INFO] maestro.Maestro.tap-BUbHBYE: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=Create Account, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=button-signup, clickable=false, bounds=[283,53][798,116], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=283, y=53, width=515, height=63))
+12:20:53.164 [ INFO] maestro.Maestro.tap-BUbHBYE: Refreshed element
+12:20:53.164 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Tapping at (540, 84) using hierarchy based logic for wait
+12:20:53.165 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:53.165 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:53.670 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to byte array
+12:20:53.672 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:20:54.459 [ INFO] maestro.Maestro.hierarchyBasedTap-hbl3e4M: Something have changed in the UI judging by screenshot (d=0.008677719). Proceed.
+12:20:54.459 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Create Account" COMPLETED
+12:20:54.459 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Enter your Username" RUNNING
+12:21:11.516 [ERROR] maestro.orchestra.Orchestra.executeCommands: [Command execution] CommandFailed: Element not found: Text matching regex: Enter your Username
+12:21:11.517 [ INFO] maestro.cli.runner.TestSuiteInteractor.invoke: Tap on "Enter your Username" FAILED
+12:21:11.520 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+12:21:11.520 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+12:21:13.005 [ INFO] maestro.drivers.AndroidDriver.close: [Start] close port forwarder
+12:21:18.012 [ INFO] maestro.drivers.AndroidDriver.close: [Done] close port forwarder
+12:21:18.012 [ INFO] maestro.drivers.AndroidDriver.close: [Start] Remove host port from port forwarder map
+12:21:18.012 [ INFO] maestro.drivers.AndroidDriver.close: [Done] Remove host port from port forwarder map
+12:21:18.013 [ INFO] maestro.drivers.AndroidDriver.close: [Start] Remove host port from port to allocation map
+12:21:18.013 [ INFO] maestro.drivers.AndroidDriver.close: [Done] Remove host port from port to allocation map
+12:21:18.013 [ INFO] maestro.drivers.AndroidDriver.close: [Start] Uninstall driver from device
+12:21:18.534 [ INFO] maestro.drivers.AndroidDriver.close: [Done] Uninstall driver from device
+12:21:18.534 [ INFO] maestro.drivers.AndroidDriver.close: [Start] Close instrumentation session
+12:21:18.534 [ INFO] maestro.drivers.AndroidDriver.close: [Done] Close instrumentation session
+12:21:18.534 [ INFO] maestro.drivers.AndroidDriver.close: [Start] Shutdown GRPC channel
+12:21:18.538 [ INFO] maestro.drivers.AndroidDriver.close: [Done] Shutdown GRPC channel
