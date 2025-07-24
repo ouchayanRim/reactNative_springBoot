@@ -9,19 +9,19 @@ import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
 
   const handleLogin = async () => {
-    if (!email.trim() || !password.trim()) {
+    if (!username.trim() || !password.trim()) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
     setLoading(true);
-    const result = await login(email, password);
+    const result = await login(username, password);
     setLoading(false);
 
     if (result.success) {
@@ -46,14 +46,16 @@ export default function LoginScreen() {
 
             <View style={styles.form}>
               <Input
-                label="Email"
-                value={email}
-                onChangeText={setEmail}
-                placeholder="Enter your email"
-                keyboardType="email-address"
+                label="Username"
+                value={username}
+                onChangeText={setusername}
+                placeholder="Enter your Username"
+                keyboardType="default"
                 autoCapitalize="none"
-                testID="input-email"
+                testID="input-username2"
               />
+
+        
 
               <Input
                 label="Password"
@@ -61,14 +63,14 @@ export default function LoginScreen() {
                 onChangeText={setPassword}
                 placeholder="Enter your password"
                 secureTextEntry
-                testID="input-password"
+                testID="input-password2"
               />
 
               <Button
                 title="Login"
                 onPress={handleLogin}
                 loading={loading}
-                testID="button-login"
+                testID="button-login" 
               />
             </View>
 

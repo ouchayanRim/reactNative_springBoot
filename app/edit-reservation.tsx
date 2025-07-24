@@ -87,7 +87,7 @@ export default function EditReservationScreen() {
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
-            <ThemedText style={styles.title}>Edit Reservation</ThemedText>
+            <ThemedText  testID='reseration-edit' style={styles.title}>Edit Reservation</ThemedText>
             <ThemedText style={styles.subtitle}>Update the details below</ThemedText>
           </View>
 

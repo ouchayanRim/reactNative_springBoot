@@ -4,14 +4,16 @@ import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 interface InputProps {
-  label: string;
-  value: string;
+    label?: string;
+    value: string;
   onChangeText: (text: string) => void;
   placeholder?: string;
   secureTextEntry?: boolean;
   keyboardType?: 'default' | 'email-address';
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  testID?: string;  // Ajout ici
 }
+
 
 export function Input({
   label,
@@ -21,6 +23,7 @@ export function Input({
   secureTextEntry = false,
   keyboardType = 'default',
   autoCapitalize = 'sentences',
+  testID,   // Récupérer testID
 }: InputProps) {
   return (
     <View style={styles.container}>
@@ -41,6 +44,7 @@ export function Input({
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
+        testID={testID}  // Passer testID au TextInput
       />
     </View>
   );
@@ -62,4 +66,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
   },
-}); 
+});

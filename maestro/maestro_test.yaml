@@ -1,0 +1,217 @@
+appId: com.rim.reservation
+name: Reservation
+---
+# 1. Launch app and verify welcome screen
+- launchApp
+
+- evalScript: ${output.randomNumber = (Math.floor(Math.random() * 10000) + 1).toString()}
+
+- extendedWaitUntil:
+        visible:
+              id: welcome-index # or any other selector
+        timeout: 100000 # Timeout in milliseconds
+
+- assertVisible: "Welcome"
+- assertVisible: "Please choose an option to continue"
+- assertVisible: "Login"
+- assertVisible: "Sign Up"
+
+# 2. Test Sign Up flow
+- tapOn: "Sign Up"
+- assertVisible: "Create Account"
+- assertVisible: "Sign up to get started"
+
+# Fill signup form
+- tapOn: "Choose a username"
+- inputText: "${output.randomNumber}"
+- tapOn: "Enter your email"
+- inputText: "${output.randomNumber}@example.com"
+- tapOn: "Choose a password"
+- inputText: "${output.randomNumber}"
+- hideKeyboard
+
+- tapOn:
+        id: "button-signup"
+
+- extendedWaitUntil:
+        visible: Welcome Back
+        timeout: 30000 # Timeout in milliseconds      
+
+- tapOn:
+        id: "input-username2"
+- inputText: "${output.randomNumber}"
+
+- tapOn:
+        id: "input-password2"
+- inputText: "${output.randomNumber}"
+
+- hideKeyboard
+
+# Submit login
+- extendedWaitUntil:
+        visible: "Login"
+- tapOn:
+        id: "button-login"
+
+- assertVisible: "MY Reservations"
+- assertVisible: "Logout"
+
+- tapOn:
+        id: "add-reservation-button"
+
+- assertVisible: "New Reservation"
+- assertVisible: "Fill in the details below"
+
+- tapOn:
+        id: "reservation-date-input"
+- inputText: "1989-05-04"
+
+- tapOn:
+        id: "reservation-time-input"
+- inputText: "14:19"
+
+- tapOn:
+        id: "reservation-duration-input"
+- inputText: "05"
+
+- hideKeyboard
+
+- tapOn:
+        id: reservation-guest-count-input
+- inputText: "2"
+
+- hideKeyboard
+
+- tapOn: "Create Reservation"
+
+- assertVisible: "My Reservations"
+- assertVisible: "Edit"
+- assertVisible: "Delete"
+- assertVisible: "Logout"
+
+- tapOn: Edit
+
+- assertVisible: "Edit Reservation"
+- assertVisible: "Update the details below"
+- assertVisible: "Date"
+
+# - extendedWaitUntil:
+#         visible:
+#               id: reseration-edit # or any other selector
+#         timeout: 30000 # Timeout in milliseconds
+
+# - tapOn:
+#         id: "reservation-date-input"
+#         timeout: 3000 # en millisecondes (ici, 3 secondes)
+
+- tapOn: YYYY-MM-DD
+- inputText: "2020-07-04"
+
+# - inputText:
+#         text: "2010-07-04"
+#         timeout: 3000 # ici aussi 3 secondes d’attente maximum
+
+- tapOn: "HH:MM"
+- inputText: "17:19"
+
+- tapOn:
+        id: "edit-reservation-duration-input"
+- inputText: "22"
+
+- hideKeyboard
+
+- tapOn:
+        id: edit-reservation-guest-count-input
+- inputText: "4"
+
+- hideKeyboard
+
+- extendedWaitUntil:
+        visible: "Update Reservation"
+        timeout: 30000 # Timeout in milliseconds  
+
+- extendedWaitUntil:
+        visible: "Cancel"
+        timeout: 30000
+
+- tapOn:
+        id: "edit-reservation-submit-button"
+
+# Si la popup s'affiche, on la gère
+- runFlow:
+        when:
+              visible: "Invalid reservation data"
+        commands:
+            - tapOn: "OK"
+            - tapOn:
+                    id: "edit-reservation-cancel-button"
+
+- assertVisible: "My Reservations"
+- assertVisible: "Add New Reservation"
+
+- tapOn:
+        id: "add-reservation-button"
+
+- assertVisible: "New Reservation"
+- assertVisible: "Fill in the details below"
+
+- tapOn:
+        id: "reservation-date-input"
+- inputText: "2020-07-11"
+
+- tapOn:
+        id: "reservation-time-input"
+- inputText: "11:11"
+
+- tapOn:
+        id: "reservation-duration-input"
+- inputText: "8"
+
+- hideKeyboard
+
+- tapOn:
+        id: reservation-guest-count-input
+- inputText: "3"
+
+- hideKeyboard
+
+- tapOn: "Create Reservation"
+
+- assertVisible: "My Reservations"
+- assertVisible: "Edit"
+- assertVisible: "Delete"
+- assertVisible: "Logout"
+
+- tapOn: "Delete"
+
+- assertVisible: "My Reservations"
+- assertVisible: "Logout"
+
+- extendedWaitUntil:
+        visible: Logout
+        timeout: 30000 # Timeout in milliseconds  
+
+- tapOn: "Logout"
+
+- extendedWaitUntil:
+        visible: Welcome Back
+        timeout: 30000 # Timeout in milliseconds      
+
+- tapOn:
+        id: "input-username2"
+- inputText: "${output.randomNumber}"
+
+- tapOn:
+        id: "input-password2"
+- inputText: "${output.randomNumber}"
+
+- hideKeyboard
+
+# Submit login
+- extendedWaitUntil:
+        visible: "Login"
+- tapOn:
+        id: "button-login"
+
+- assertVisible: "MY Reservations"
+- assertVisible: "Logout"

@@ -80,6 +80,7 @@ export default function ReservationsScreen() {
           title="Add New Reservation"
           onPress={() => router.push('/add-reservation')}
           loading={loading}
+          testID='add-reservation-button'
         />
       </View>
     </ThemedView>

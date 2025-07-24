@@ -1,68 +1,50 @@
-import { ThemedText } from '@/components/ThemedText';
-import { Colors } from '@/constants/Colors';
 import React from 'react';
-import { ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, Pressable, PressableProps, StyleSheet, Text } from 'react-native';
 
-interface ButtonProps {
+type ButtonProps = {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary';
   loading?: boolean;
-  disabled?: boolean;
-}
+  testID?: string;
+  accessibilityLabel?: string;
+} & PressableProps;
 
-export function Button({
+export const Button: React.FC<ButtonProps> = ({
   title,
   onPress,
-  variant = 'primary',
   loading = false,
-  disabled = false,
-}: ButtonProps) {
-  const isPrimary = variant === 'primary';
-  const isDisabled = disabled || loading;
-
+  testID,
+  accessibilityLabel,
+  ...rest
+}) => {
   return (
-    <TouchableOpacity
-      style={[
-        styles.button,
-        {
-          backgroundColor: isPrimary ? Colors.tint : 'transparent',
-          borderColor: Colors.tint,
-          borderWidth: isPrimary ? 0 : 2,
-          opacity: isDisabled ? 0.6 : 1,
-        },
-      ]}
+    <Pressable
+      style={styles.button}
       onPress={onPress}
-      disabled={isDisabled}
+      testID={testID}
+      accessibilityLabel={accessibilityLabel}
+      disabled={loading}
+      {...rest}
     >
       {loading ? (
-        <ActivityIndicator color={isPrimary ? 'white' : Colors.tint} />
+        <ActivityIndicator color="white" />
       ) : (
-        <ThemedText
-          style={[
-            styles.buttonText,
-            {
-              color: isPrimary ? 'white' : Colors.tint,
-            },
-          ]}
-        >
-          {title}
-        </ThemedText>
+        <Text style={styles.buttonText}>{title}</Text>
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
-}
+};
 
 const styles = StyleSheet.create({
   button: {
-    height: 50,
-    borderRadius: 8,
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 6,
     alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 10,
   },
   buttonText: {
+    color: '#fff',
     fontSize: 16,
-    fontWeight: '600',
   },
-}); 
+});

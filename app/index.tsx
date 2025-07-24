@@ -18,15 +18,15 @@ export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>
       <View style={styles.content}>
-        <ThemedText style={styles.title}>Welcome</ThemedText>
+        <ThemedText testID='welcome-index' style={styles.title}>Welcome</ThemedText>
         <ThemedText style={styles.subtitle}>Please choose an option to continue</ThemedText>
         
         <View style={styles.buttonContainer}>
-          <Link href="/login" style={[styles.button, { backgroundColor: Colors.tint }]}>
+          <Link href="/login" testID='login-button' style={[styles.button, { backgroundColor: Colors.tint }]}>
             <ThemedText style={styles.buttonText}>Login</ThemedText>
           </Link>
           
-          <Link href="/signup" style={[styles.button, styles.secondaryButton, { borderColor: Colors.tint }]}>
+          <Link href="/signup" testID='signup-button' style={[styles.button, styles.secondaryButton, { borderColor: Colors.tint }]}>
             <ThemedText style={[styles.buttonText, { color: Colors.tint }]}>Sign Up</ThemedText>
           </Link>
         </View>
